@@ -20,27 +20,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{&quot;hostname&quot;:&quot;example.com&quot;,&quot;root&quot;:&quot;&#x2F;&quot;,&quot;images&quot;:&quot;&#x2F;images&quot;,&quot;scheme&quot;:&quot;Muse&quot;,&quot;version&quot;:&quot;8.4.0&quot;,&quot;exturl&quot;:false,&quot;sidebar&quot;:{&quot;position&quot;:&quot;left&quot;,&quot;display&quot;:&quot;post&quot;,&quot;padding&quot;:18,&quot;offset&quot;:12},&quot;copycode&quot;:false,&quot;bookmark&quot;:{&quot;enable&quot;:false,&quot;color&quot;:&quot;#222&quot;,&quot;save&quot;:&quot;auto&quot;},&quot;fancybox&quot;:false,&quot;mediumzoom&quot;:false,&quot;lazyload&quot;:false,&quot;pangu&quot;:false,&quot;comments&quot;:{&quot;style&quot;:&quot;tabs&quot;,&quot;active&quot;:null,&quot;storage&quot;:true,&quot;lazyload&quot;:false,&quot;nav&quot;:null},&quot;motion&quot;:{&quot;enable&quot;:true,&quot;async&quot;:false,&quot;transition&quot;:{&quot;post_block&quot;:&quot;fadeIn&quot;,&quot;post_header&quot;:&quot;fadeInDown&quot;,&quot;post_body&quot;:&quot;fadeInDown&quot;,&quot;coll_header&quot;:&quot;fadeInLeft&quot;,&quot;sidebar&quot;:&quot;fadeInUp&quot;}},&quot;prism&quot;:false,&quot;i18n&quot;:{&quot;placeholder&quot;:&quot;Searching...&quot;,&quot;empty&quot;:&quot;We didn&#39;t find any results for the search: ${query}&quot;,&quot;hits_time&quot;:&quot;${hits} results found in ${time} ms&quot;,&quot;hits&quot;:&quot;${hits} results found&quot;}}</script>
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="数据库的隔离级别事务相互读取的几种问题同时运行的多个事务，事物之间的访问数据库的相同的数据时，会导致  脏读：（读到未提交的脏数据）两个事务T1，T2        T1读取了已经被T2更新的 但是还没有提交的字段，若T2回滚，T1读取到的数据时临时无效的。 （男生给女朋友打钱 准备打500，在支付界面给女朋友看到了。但是男朋友没有点击最后的转账按钮。 女朋友脏读了男友的转账数据）  不可重复读：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2021/05/31/hello-world/index.html">
+<meta property="og:title" content="白雨的博客">
+<meta property="og:url" content="http://example.com/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/index.html">
 <meta property="og:site_name" content="白雨的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="数据库的隔离级别事务相互读取的几种问题同时运行的多个事务，事物之间的访问数据库的相同的数据时，会导致  脏读：（读到未提交的脏数据）两个事务T1，T2        T1读取了已经被T2更新的 但是还没有提交的字段，若T2回滚，T1读取到的数据时临时无效的。 （男生给女朋友打钱 准备打500，在支付界面给女朋友看到了。但是男朋友没有点击最后的转账按钮。 女朋友脏读了男友的转账数据）  不可重复读：">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-05-31T01:31:35.680Z">
-<meta property="article:modified_time" content="2021-05-31T01:31:35.680Z">
+<meta property="article:published_time" content="2021-05-31T12:00:33.572Z">
+<meta property="article:modified_time" content="2021-01-12T07:29:47.322Z">
 <meta property="article:author" content="YuTaoWhite">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2021/05/31/hello-world/">
+<link rel="canonical" href="http://example.com/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;31&#x2F;hello-world&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;05&#x2F;31&#x2F;hello-world&#x2F;&quot;,&quot;title&quot;:&quot;Hello World&quot;}</script>
+<script class="next-config" data-name="page" type="application/json">{&quot;sidebar&quot;:&quot;&quot;,&quot;isHome&quot;:false,&quot;isPost&quot;:true,&quot;lang&quot;:&quot;en&quot;,&quot;comments&quot;:true,&quot;permalink&quot;:&quot;http:&#x2F;&#x2F;example.com&#x2F;2021&#x2F;05&#x2F;31&#x2F;%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB&#x2F;&quot;,&quot;path&quot;:&quot;2021&#x2F;05&#x2F;31&#x2F;数据库的隔离级别&#x2F;&quot;,&quot;title&quot;:&quot;&quot;}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">&quot;&quot;</script>
-<title>Hello World | 白雨的博客</title><script src="/js/config.js"></script>
+<title> | 白雨的博客</title><script src="/js/config.js"></script>
   
 
 
@@ -107,7 +107,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">1.</span> <span class="nav-text">数据库的隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8B%E5%8A%A1%E7%9B%B8%E4%BA%92%E8%AF%BB%E5%8F%96%E7%9A%84%E5%87%A0%E7%A7%8D%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">事务相互读取的几种问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">四种隔离级别</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -171,7 +171,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/31/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/31/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -184,7 +184,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          
         </h1>
 
         <div class="post-meta-container">
@@ -195,8 +195,15 @@
       </span>
       <span class="post-meta-item-text">Posted on</span>
 
-      <time title="Created: 2021-05-31 09:31:35" itemprop="dateCreated datePublished" datetime="2021-05-31T09:31:35+08:00">2021-05-31</time>
+      <time title="Created: 2021-05-31 20:00:33" itemprop="dateCreated datePublished" datetime="2021-05-31T20:00:33+08:00">2021-05-31</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-01-12 15:29:47" itemprop="dateModified" datetime="2021-01-12T15:29:47+08:00">2021-01-12</time>
+      </span>
 
   
 </div>
@@ -208,19 +215,43 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h2 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h2><h3 id="事务相互读取的几种问题"><a href="#事务相互读取的几种问题" class="headerlink" title="事务相互读取的几种问题"></a>事务相互读取的几种问题</h3><p>同时运行的多个事务，事物之间的访问数据库的相同的数据时，会导致</p>
+<ol>
+<li><p>脏读：（读到未提交的脏数据）两个事务T1，T2      </p>
+<p> T1读取了已经被T2<strong>更新的</strong> 但是还<strong>没有提交的</strong>字段，若T2回滚，T1读取到的数据时临时无效的。</p>
+<p>（男生给女朋友打钱 准备打500，在支付界面给女朋友看到了。但是男朋友没有点击最后的转账按钮。 女朋友脏读了男友的转账数据）</p>
+</li>
+<li><p>不可重复读：（更新导致前后读到的数据不一样）两个事务T1，T2</p>
+<p>T1读取了一个字段。然后T2<strong>更新</strong>了这个字段。T1再次读取这个字段，结果不同了。</p>
+<p>（高铁买票，看到还剩一张票，点进去准备买，结果已经被买走了。两次看到的结果不一样。）</p>
+</li>
+<li><p>幻读：（插入或删除导致读到数据个数不一样）两个事务T1 ，T2</p>
+<p>T1从一个表中读取了一个字段，T2在表中<strong>插入了一些新的行</strong>。之后，T1在读取同一个表，多出了刚插入的几个行。</p>
+<p>（我查询到我的账户里有100块，我去把账户里所有钱拿来炒股。这个时候，有人打给我5块钱。我发现我往股市里投了105块钱）</p>
+<p>一个事务与其他事务隔离的程度被称为隔离级别。</p>
+<p>不同隔离级别对应不同的干扰程度。</p>
+<p>隔离级别越高，数据一致性越好，但并发性也就越弱。</p>
+</li>
+</ol>
+<h3 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h3><ol>
+<li> READ UNCOMMITTED(读未提交数据)</li>
+</ol>
+<p>   事务可以读取到 其他事务未提交的变更</p>
+<pre><code>会出现脏读 不可重复读 幻读
+</code></pre>
+<ol start="2">
+<li><p>READ COMMITTED(读已提交数据)</p>
+<p>​    事务只可以读取已经被其他事务提交的变更</p>
+<p>​    可以避免了脏读 但不可避免不可重复和幻读</p>
+</li>
+<li><p>REPEATABLE READ（可重复读）</p>
+<p>确保事务可以多次的从一个字段中读取相同的值，在这个事务持续的期间内，禁止其他事务对这个字段进行更新。</p>
+<p>避免了脏读和不可重复读，但还有幻读没有避免</p>
+</li>
+<li><p>SERIALIZABLE(串行化)</p>
+</li>
+</ol>
+<p>​    一个事务可以从一个表中读取到保证一致的行，但是这个事务持续的期间内，其他的事务不可以对表有任何的增删改操作，性能十分低下。</p>
 
     </div>
 
@@ -234,12 +265,12 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/05/29/java%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%201%20-%20%E6%A6%82%E8%BF%B0/" rel="prev" title="java语言基础 1 - 概述">
-                  <i class="fa fa-chevron-left"></i> java语言基础 1 - 概述
+                <a href="/2021/05/31/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/05/31/==%E4%B8%8Eequals()%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="">
+                <a href="/2021/05/31/%E6%95%B0%E7%BB%84%20Array/" rel="next" title="">
                    <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
